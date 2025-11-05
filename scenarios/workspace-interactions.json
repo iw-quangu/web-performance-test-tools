@@ -1,0 +1,157 @@
+{
+  "scenarios": [
+    {
+      "name": "Workspace Customer Search",
+      "url": "https://loadtest.instantwatch.net/wa/iw/workspace/?id=15",
+      "loginUrl": "https://loadtest.instantwatch.net/Login",
+      "loginConfig": {
+        "usernameSelector": "#Username",
+        "passwordSelector": "#Password",
+        "submitSelector": "button[type=submit]"
+      },
+      "actions": [
+        {
+          "type": "wait-for-selector",
+          "selector": "main .ant-select-auto-complete:first-of-type input.ant-select-selection-search-input",
+          "timeoutMs": 30000,
+          "description": "Wait for workspace customer search input to render"
+        },
+        {
+          "type": "click",
+          "selector": "main .ant-select-auto-complete:first-of-type input.ant-select-selection-search-input",
+          "description": "Focus the customer search input"
+        },
+        {
+          "type": "evaluate",
+          "expression": "document.querySelector('main .ant-select-auto-complete:first-of-type input.ant-select-selection-search-input').value = '';",
+          "description": "Clear the customer search input"
+        },
+        {
+          "type": "type",
+          "selector": "main .ant-select-auto-complete:first-of-type input.ant-select-selection-search-input",
+          "text": "LoadTestCustomer00000002",
+          "description": "Enter the target customer id"
+        },
+        {
+          "type": "wait-for-selector",
+          "selector": "//div[contains(@class,'ant-select-item')]//div[contains(@class,'ant-select-item-option-content') and contains(., 'LoadTestCustomer00000002')]",
+          "selectorType": "xpath",
+          "timeoutMs": 10000,
+          "description": "Wait for autocomplete suggestion with the customer"
+        },
+        {
+          "type": "click",
+          "selector": "//div[contains(@class,'ant-select-item')]//div[contains(@class,'ant-select-item-option-content') and contains(., 'LoadTestCustomer00000002')]",
+          "selectorType": "xpath",
+          "description": "Select the autocomplete suggestion for LoadTestCustomer00000002"
+        },
+        {
+          "type": "wait",
+          "ms": 1500,
+          "description": "Allow workspace details to load for the selected customer"
+        },
+        {
+          "type": "wait-for-selector",
+          "selector": "//h4[contains(normalize-space(.), 'John Doe')]",
+          "selectorType": "xpath",
+          "timeoutMs": 20000,
+          "description": "Confirm the workspace header shows the expected customer name"
+        },
+        {
+          "type": "wait-for-selector",
+          "selector": "//div[contains(normalize-space(.), 'Customer ID:')]//following-sibling::*[contains(normalize-space(.), 'LoadTestCustomer00000002')]",
+          "selectorType": "xpath",
+          "timeoutMs": 20000,
+          "description": "Verify the selected customer identifier is displayed"
+        }
+      ]
+    },
+    {
+      "name": "Workspace Customer Search - Page 16",
+      "url": "https://loadtest.instantwatch.net/wa/iw/workspace/?id=16",
+      "loginUrl": "https://loadtest.instantwatch.net/Login",
+      "loginConfig": {
+        "usernameSelector": "#Username",
+        "passwordSelector": "#Password",
+        "submitSelector": "button[type=submit]"
+      },
+      "actions": [
+        {
+          "type": "wait-for-selector",
+          "selector": "main .ant-select-auto-complete:first-of-type input.ant-select-selection-search-input",
+          "timeoutMs": 30000,
+          "description": "Wait for workspace customer search input to render"
+        },
+        {
+          "type": "click",
+          "selector": "main .ant-select-auto-complete:first-of-type input.ant-select-selection-search-input",
+          "description": "Focus the customer search input"
+        },
+        {
+          "type": "evaluate",
+          "expression": "document.querySelector('main .ant-select-auto-complete:first-of-type input.ant-select-selection-search-input').value = '';",
+          "description": "Clear the customer search input"
+        },
+        {
+          "type": "type",
+          "selector": "main .ant-select-auto-complete:first-of-type input.ant-select-selection-search-input",
+          "text": "LoadTestCustomer00000002",
+          "description": "Enter the target customer id"
+        },
+        {
+          "type": "wait-for-selector",
+          "selector": "//div[contains(@class,'ant-select-item')]//div[contains(@class,'ant-select-item-option-content') and contains(., 'LoadTestCustomer00000002')]",
+          "selectorType": "xpath",
+          "timeoutMs": 10000,
+          "description": "Wait for autocomplete suggestion with the customer"
+        },
+        {
+          "type": "click",
+          "selector": "//div[contains(@class,'ant-select-item')]//div[contains(@class,'ant-select-item-option-content') and contains(., 'LoadTestCustomer00000002')]",
+          "selectorType": "xpath",
+          "description": "Select the autocomplete suggestion for LoadTestCustomer00000002"
+        },
+        {
+          "type": "wait",
+          "ms": 1500,
+          "description": "Allow workspace details to load for the selected customer"
+        },
+        {
+          "type": "wait-for-selector",
+          "selector": "//h4[contains(normalize-space(.), 'John Doe')]",
+          "selectorType": "xpath",
+          "timeoutMs": 20000,
+          "description": "Confirm the workspace header shows the expected customer name"
+        },
+        {
+          "type": "wait-for-selector",
+          "selector": "//div[contains(normalize-space(.), 'Customer ID:')]//following-sibling::*[contains(normalize-space(.), 'LoadTestCustomer00000002')]",
+          "selectorType": "xpath",
+          "timeoutMs": 20000,
+          "description": "Verify the selected customer identifier is displayed"
+        },
+        {
+          "type": "evaluate",
+          "expression": "Array.from(document.querySelectorAll('button')).find(btn => btn.textContent.trim() === 'Search' && btn.className.includes('ant-btn-primary')).click()",
+          "description": "Click Search button in invoice search section using evaluate"
+        },
+        {
+          "type": "wait-for-selector",
+          "selector": "table tbody tr",
+          "timeoutMs": 10000,
+          "description": "Wait for invoice search results to load"
+        },
+        {
+          "type": "click",
+          "selector": "table tbody tr:first-child",
+          "description": "Click first row in invoice search results table"
+        },
+        {
+          "type": "wait",
+          "ms": 2000,
+          "description": "Wait for invoice details information to load"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "name": "performancetest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:all": "node scripts/runCompleteTestSuite.js",
+    "test:baseline": "node scripts/runMultipleTests.js --runs 3",
+    "test:throttled": "node scripts/runMultipleTests.js --runs 3 --throttle Fast4G",
+    "test:warmcache": "node scripts/runWarmCacheTests.js --runs 3",
+    "analyze:baseline": "node scripts/analyzeMultipleRuns.js --report",
+    "analyze:throttled": "node scripts/compareThrottledResults.js --report",
+    "analyze:warmcache": "node scripts/analyzeWarmCacheResults.js --report",
+    "analyze:bundles": "node scripts/extractBundleSizes.js --report",
+    "analyze:all": "npm run analyze:baseline && npm run analyze:throttled && npm run analyze:warmcache && npm run analyze:bundles",
+    "reports": "node scripts/runCompleteTestSuite.js --reports-only"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "chrome-launcher": "^1.0.0",
+    "dotenv": "^17.2.3",
+    "lighthouse": "^13.0.1",
+    "puppeteer-core": "^22.15.0"
+  }
+}

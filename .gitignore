@@ -1,0 +1,109 @@
+# Node.js dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# Environment variables (contains sensitive credentials)
+.env
+.env.local
+.env.*.local
+
+# Raw test results (large JSON files, user-specific)
+reports/raw/**/*.json
+reports/raw/**/
+!reports/raw/.gitkeep
+
+# Chrome/Puppeteer cache and temp files
+.cache/
+.tmp/
+*.crx
+*.pem
+
+# OS-specific files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+*.sublime-project
+*.sublime-workspace
+
+# Logs
+logs/
+*.log
+
+# Chrome user data (if stored locally)
+chrome-user-data/
+.chromium/
+
+# Coverage reports
+coverage/
+.nyc_output/
+
+# Build artifacts
+dist/
+build/
+*.tgz
+
+# Temporary test files
+tmp/
+temp/
+*.tmp
+
+# Screenshot files (if generated)
+screenshots/**/*.png
+screenshots/**/*.jpg
+!screenshots/.gitkeep
+
+# Performance profiling data
+*.cpuprofile
+*.heapprofile
+*.heapsnapshot
+
+# Lighthouse CLI cache
+.lighthouse/
+
+# Test artifacts that may be regenerated
+reports/raw/dashboard/*.json
+reports/raw/workspace/*.json
+reports/raw/dashboard-fast4g/*.json
+reports/raw/workspace-fast4g/*.json
+reports/raw/dashboard-warm/*.json
+reports/raw/workspace-warm/*.json
+reports/raw/*/run-*.json
+
+# Keep directory structure but ignore contents
+reports/raw/dashboard/*
+!reports/raw/dashboard/.gitkeep
+reports/raw/workspace/*
+!reports/raw/workspace/.gitkeep
+
+# User-specific analysis files (optional - remove if you want to track these)
+# reports/*-analysis.md
+# reports/bundle-*.md
+# reports/throttling-*.md
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# System files
+.fuse_hidden*
+.nfs*

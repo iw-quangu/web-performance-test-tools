@@ -1,0 +1,158 @@
+{
+  "scenarios": [
+    {
+      "name": "Dashboard Customer Search",
+      "url": "https://loadtest.instantwatch.net/CustomPage/15",
+      "loginUrl": "https://loadtest.instantwatch.net/Login",
+      "loginConfig": {
+        "usernameSelector": "#Username",
+        "passwordSelector": "#Password",
+        "submitSelector": "button[type=submit]"
+      },
+      "actions": [
+        {
+          "type": "wait-for-selector",
+          "selector": "input#searchField",
+          "timeoutMs": 30000,
+          "description": "Wait for dashboard customer search input to render"
+        },
+        {
+          "type": "click",
+          "selector": "input#searchField",
+          "description": "Focus the customer search input"
+        },
+        {
+          "type": "evaluate",
+          "expression": "document.querySelector('input#searchField').value = '';",
+          "description": "Clear the customer search input"
+        },
+        {
+          "type": "type",
+          "selector": "input#searchField",
+          "text": "LoadTestCustomer00000002",
+          "description": "Enter the target customer id"
+        },
+        {
+          "type": "wait-for-selector",
+          "selector": "//ul[contains(@class,'ui-autocomplete')]//li[contains(@class,'autocompleteAccount')]//a[contains(., 'LoadTestCustomer00000002_account')]",
+          "selectorType": "xpath",
+          "timeoutMs": 10000,
+          "description": "Wait for autocomplete suggestion with the customer account"
+        },
+        {
+          "type": "click",
+          "selector": "//ul[contains(@class,'ui-autocomplete')]//li[contains(@class,'autocompleteAccount')]//a[contains(., 'LoadTestCustomer00000002_account')]",
+          "selectorType": "xpath",
+          "description": "Select the autocomplete suggestion for LoadTestCustomer00000002"
+        },
+        {
+          "type": "wait",
+          "ms": 1500,
+          "description": "Allow dashboard details to load for the selected customer"
+        },
+        {
+          "type": "wait-for-selector",
+          "selector": "//h1[contains(@class,'nameBox') and contains(normalize-space(.), 'John Doe')]",
+          "selectorType": "xpath",
+          "timeoutMs": 20000,
+          "description": "Confirm the dashboard header shows the expected customer name"
+        },
+        {
+          "type": "wait-for-selector",
+          "selector": "//div[contains(@class,'widgetHeader') and contains(normalize-space(.), 'Customer LoadTestCustomer00000002')]",
+          "selectorType": "xpath",
+          "timeoutMs": 20000,
+          "description": "Verify the selected customer identifier is displayed"
+        }
+      ]
+    },
+    {
+      "name": "Dashboard Customer Search - Page 16",
+      "url": "https://loadtest.instantwatch.net/CustomPage/16",
+      "loginUrl": "https://loadtest.instantwatch.net/Login",
+      "loginConfig": {
+        "usernameSelector": "#Username",
+        "passwordSelector": "#Password",
+        "submitSelector": "button[type=submit]"
+      },
+      "actions": [
+        {
+          "type": "wait-for-selector",
+          "selector": "input#searchField",
+          "timeoutMs": 30000,
+          "description": "Wait for dashboard customer search input to render"
+        },
+        {
+          "type": "click",
+          "selector": "input#searchField",
+          "description": "Focus the customer search input"
+        },
+        {
+          "type": "evaluate",
+          "expression": "document.querySelector('input#searchField').value = '';",
+          "description": "Clear the customer search input"
+        },
+        {
+          "type": "type",
+          "selector": "input#searchField",
+          "text": "LoadTestCustomer00000002",
+          "description": "Enter the target customer id"
+        },
+        {
+          "type": "wait-for-selector",
+          "selector": "//ul[contains(@class,'ui-autocomplete')]//li[contains(@class,'autocompleteAccount')]//a[contains(., 'LoadTestCustomer00000002_account')]",
+          "selectorType": "xpath",
+          "timeoutMs": 10000,
+          "description": "Wait for autocomplete suggestion with the customer account"
+        },
+        {
+          "type": "click",
+          "selector": "//ul[contains(@class,'ui-autocomplete')]//li[contains(@class,'autocompleteAccount')]//a[contains(., 'LoadTestCustomer00000002_account')]",
+          "selectorType": "xpath",
+          "description": "Select the autocomplete suggestion for LoadTestCustomer00000002"
+        },
+        {
+          "type": "wait",
+          "ms": 1500,
+          "description": "Allow dashboard details to load for the selected customer"
+        },
+        {
+          "type": "wait-for-selector",
+          "selector": "//h1[contains(@class,'nameBox') and contains(normalize-space(.), 'John Doe')]",
+          "selectorType": "xpath",
+          "timeoutMs": 20000,
+          "description": "Confirm the dashboard header shows the expected customer name"
+        },
+        {
+          "type": "wait-for-selector",
+          "selector": "//div[contains(@class,'widgetHeader') and contains(normalize-space(.), 'Customer LoadTestCustomer00000002')]",
+          "selectorType": "xpath",
+          "timeoutMs": 20000,
+          "description": "Verify the selected customer identifier is displayed"
+        },
+        {
+          "type": "click",
+          "selector": "button.btn-success.ng-binding",
+          "description": "Click Search button in Search invoices widget"
+        },
+        {
+          "type": "wait-for-selector",
+          "selector": "table.bodyTable.gridTable tbody tr",
+          "timeoutMs": 10000,
+          "description": "Wait for invoice search results to load"
+        },
+        {
+          "type": "click",
+          "selector": "table.bodyTable.gridTable tbody tr:first-child",
+          "description": "Click first row in invoice search results grid"
+        },
+        {
+          "type": "wait-for-selector",
+          "selector": "#invoiceDetails tbody tr",
+          "timeoutMs": 10000,
+          "description": "Wait for invoice information to load in Invoice details widget"
+        }
+      ]
+    }
+  ]
+}
